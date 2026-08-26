@@ -9,9 +9,7 @@ A production-ready web application infrastructure deployed on AWS using CDK and 
 Visit to see the load balancer working! Refresh the page to see Server 1 and Server 2 alternate.
 
 
-## Architecture
 
-![Architecture Diagram](./architecture.png)
 ## What's Deployed
 
 - **VPC** with public/private/isolated subnets across 2 AZs
