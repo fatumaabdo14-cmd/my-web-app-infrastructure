@@ -1,17 +1,3 @@
-# Multi-Tier AWS Infrastructure with CDK
-
-A production-ready, highly available web application infrastructure deployed on AWS using AWS CDK and TypeScript.
-
-## Architecture
-
-![Architecture Diagram](./architecture.png)
-
-This infrastructure demonstrates:
-- **High Availability** across 2 Availability Zones
-- **Load Balancing** for traffic distribution
-- **Security best practices** with public/private subnet separation
-- **Database isolation** in private subnets
-- **Infrastructure as Code** using AWS CDK
 
 ## What's Deployed
 
@@ -65,7 +51,6 @@ my-web-app-infrastructure/
 ├── tsconfig.json
 └── README.md
 
-
 ## How to Deploy
 
 ### Prerequisites
@@ -97,4 +82,70 @@ The deployment takes approximately **15-20 minutes** for the full stack.
 
 ## How to Test
 
-Once deployed, the ALB DNS name will be output. Open it in your browser:
+Once deployed, open the ALB DNS name in your browser. You should see:
+- "Server 1" or "Server 2" (load balancer distributing traffic)
+- Refresh the page to see it alternate between the two servers
+
+## Architecture Benefits
+
+- **High Availability**: If one EC2 instance fails, traffic routes to the other
+- **Scalability**: Easy to add more EC2 instances behind the ALB
+- **Security**: Database is completely isolated from the internet
+- **Disaster Recovery**: Multi-AZ setup protects against AZ failures
+- **Cost Optimized**: Using T3.MICRO instances and single NAT gateway
+
+## Clean Up
+
+To avoid AWS charges, destroy all resources:
+
+```bash
+cdk destroy --all
+```
+
+Confirm when prompted. This will delete:
+- VPC and all subnets
+- Load Balancer
+- EC2 instances
+- RDS database
+
+⚠️ **Warning**: This will delete all data. Make sure you want to proceed.
+
+## Learning Outcomes
+
+Through building this infrastructure, I learned:
+
+✅ AWS networking concepts (VPC, subnets, routing, gateways)
+✅ High availability and disaster recovery patterns
+✅ Security best practices (public/private separation)
+✅ Infrastructure as Code with AWS CDK
+✅ Load balancing and traffic distribution
+✅ Database security and isolation
+✅ CloudFormation under the hood
+✅ Debugging real infrastructure issues
+
+## Key CDK Concepts Applied
+
+- **Stack composition** - Creating reusable, interdependent stacks
+- **Props interfaces** - Passing configuration between stacks
+- **Security groups** - Network access control
+- **CloudFormation outputs** - Exporting resource information
+- **Removal policies** - Clean infrastructure teardown
+
+## Next Steps
+
+- Add HTTPS/SSL certificate to ALB
+- Implement auto-scaling for EC2 instances
+- Add CloudWatch monitoring and alarms
+- Implement CI/CD pipeline for application deployment
+- Add Lambda functions for serverless components
+
+## Author
+
+**Fatuma** - Cloud Engineering Student  
+Building infrastructure on AWS | Learning DevOps | Documentation enthusiast
+
+## Resources
+
+- [AWS CDK Documentation](https://docs.aws.amazon.com/cdk/)
+- [AWS VPC Guide](https://docs.aws.amazon.com/vpc/)
+- [AWS RDS Documentation](https://docs.aws.amazon.com/rds/)
