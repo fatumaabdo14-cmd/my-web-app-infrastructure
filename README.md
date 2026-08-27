@@ -7,6 +7,9 @@ A production-ready web application infrastructure deployed on AWS using CDK and 
 **ALB DNS:** `AlbSta-ALBAE-2J3XZqR6ZOyo-462081872.us-east-1.elb.amazonaws.com`
 
 Visit to see the load balancer working! Refresh the page to see Server 1 and Server 2 alternate.
+## Architecture
+
+![Architecture Diagram](./architecture.png)
 
 
 
